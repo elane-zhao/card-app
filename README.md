@@ -4,7 +4,7 @@
 
 Make sure you have Node version v14.16.1 and the Angular CLI version 11.2.11 installed.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm i` and `ng serve`. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 
 ## Running Unit Tests
