@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+// COLOR VARIABLES
+$color-secondary-light: #ffb900;
+$color-secondary-dark: #ff7730;
+
+$color-grey-light-1: #f7f7f7;
+$color-grey-light-2: #eee;
+$color-grey-dark: #777;
+$color-grey-dark-2: #999;
+$color-grey-dark-3: #333;
+
+$color-white: #fff;
+$color-black: #000;
+
+// GRID VARIABLES
+$grid-width: 80rem;
+
+// RESPONSIVE BREAKPOINTS
+$bp-largest: 1200px;
+$bp-large: 992px;
+$bp-medium: 768px;
+$bp-small: 576px;
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+body {
+    box-sizing: border-box;
+}

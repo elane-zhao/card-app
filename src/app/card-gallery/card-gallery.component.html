@@ -1,0 +1,52 @@
+<section class="section-cards">
+    <div class="text-center mb-5" *ngIf="cards.length !== 0">
+        <h2 class="heading-secondary font-effect-fire" id="{{ myId }}-header">
+            Explore the Legends Cards!
+        </h2>
+    </div>
+
+    <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="200" (scrolled)="onScroll()">
+        <div class="d-flex justify-content-center">
+            <div class="card-deck justify-content-center">
+                <div class="card mb-5" *ngFor="let card of cards, let i = index">
+                        <div class="card-side card-front">
+                            <img [src]="card.imageUrl" class="card-img-top" [alt]="card.name">
+                            <div class="card-body">
+                                <h5 class="card-title text-center" id="{{myId}}-card-name-{{i}}">{{card.name}}</h5>
+                                <p class="card-description" id="{{myId}}-card-text-{{i}}">{{card.text}}</p>
+                            </div>
+                        </div>
+                        <div class="card-side card-back">
+                            <img [src]="card.imageUrl" class="card-img-top" [alt]="card.name">
+                            <div class="card-body">
+                                <h5 class="text-center" id="{{myId}}-card-details">Card Details</h5>
+                                <p class="card-text"><span id="{{myId}}-card-rarity-label">Rarity: </span><span id="{{myId}}-card-rarity-{{i}}">{{card.rarity || 'Unknown'}}</span></p>
+                                <p class="card-text"><span id="{{myId}}-card-cost-label">Cost: </span><span id="{{myId}}-card-cost-{{i}}">{{card.cost  || 'Unknown'}}</span></p>
+                                <p class="card-text"><span id="{{myId}}-card-power-label">Power: </span><span id="{{myId}}-card-power-{{i}}">{{card.power || 'Unknown'}}</span></p>
+                                <p class="card-text"><span id="{{myId}}-card-health-label">Health: </span><span id="{{myId}}-card-health-{{i}}">{{card.health || 'Unknown'}}</span></p>
+                                <p class="card-text"><span id="{{myId}}-card-keywords-label">Keywords: </span><span id="{{myId}}-card-keywords-{{i}}">{{card.keywords || 'Unknown'}}</span></p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <p class="card-text"><span id="{{myId}}-card-set-label">Card Set: </span><span id="{{myId}}-card-set-{{i}}">{{card.set.name}}</span></p>
+                            <p class="card-text"><span id="{{myId}}-card-type-label">Card Type: </span><span id="{{myId}}-card-type-{{i}}">{{card.type}}</span></p>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center" *ngIf="cards.length === 0 && !showErrorMsg">
+        <h2 class="font-effect-fire m-auto" id="{{ myId }}-no-card-msg">
+            Sorry, no cards were found. Please adjust your search criteria and try again.
+        </h2>
+    </div>
+
+    <div class="text-center" *ngIf="showErrorMsg">
+        <h2 class="font-effect-fire m-auto" id="{{ myId }}-error-msg">
+            Please bear with me. I seem to be experiencing technical difficulties. Please try again later.
+        </h2>
+    </div>
+
+</section>
+<!-- <footer></footer> -->

@@ -1,0 +1,82 @@
+@import '../../styles.scss';
+
+.card {
+    flex-grow: 0;
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    min-width: 18rem;
+
+    .card-img-top {
+        padding: 0;
+    }
+
+    .card-body, .card-footer {
+        padding: 10px 30px 15px;
+    }
+
+    .card-text {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &:hover {
+        .card-front {
+            transform: rotateY(-180deg);
+        }
+        .card-back {
+            transform: rotateY(0deg);
+        }
+    }
+}
+
+.card-side {
+    transition: all .8s;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+}
+
+.card-front {
+    transform: rotateY(0deg);
+  }
+
+.card-back {
+    transform: rotateY(-180deg);
+    position: absolute;
+    top: 0;
+    background-image: url('../../assets/card_back.jpeg');
+    border-radius: .25rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.section-cards {
+    background-color: $color-black;
+    padding: 5rem 0;
+    font-family: "EB Garamond", Open Sans, sans-serif;
+}
+
+.card-deck {
+    max-width: $grid-width;
+    margin: auto;
+    width: 100%;
+}
+
+.heading-secondary {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    display: inline-block;
+    letter-spacing: .2rem;
+    transition: all .2s;
+
+    &:hover {
+        transform: skewY(2deg) skewX(15deg) scale(1.1);
+    }
+
+    @media (min-width: $bp-small) {
+        font-size: 3rem;
+    }
+}
