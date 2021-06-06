@@ -42,7 +42,7 @@ describe('CardGalleryComponent', () => {
     ],
     _pageSize: 20,
     _totalCount: 1
-  }
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

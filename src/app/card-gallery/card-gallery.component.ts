@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CardService } from '../card.service';
 import { Card } from '../classes/card';
 import { CardsResponse } from '../classes/cards-response';
+import { LoaderService } from '../loader.service';
 
 @Component({
   selector: 'app-card-gallery',
@@ -23,14 +24,21 @@ export class CardGalleryComponent implements OnInit {
   // page Id for card gallery component
   myId = 'card-gallery';
 
-  constructor(private cardService: CardService) { }
+  isLoading = false;
+
+  constructor(
+    private cardService: CardService,
+    private loaderService: LoaderService) { }
 
   ngOnInit(): void {
     this.subscribeToSearchTerm();
+    this.loaderService.isLoading.subscribe((loading) => {
+      this.isLoading = loading;
+    });
   }
 
   subscribeToSearchTerm() {
-    this.cardService.searchTerm.subscribe((newValue: string) => {
+    this.cardService.searchTerm.subscribe(( newValue: string ) => {
       this.scrollToViewById(`${ this.myId }-header`);
       this.searchTerm = newValue;
       this.resetCards();
@@ -66,6 +74,10 @@ export class CardGalleryComponent implements OnInit {
     }
     this.page++;
     this.loadSearchedCards(this.searchTerm);
+  }
+
+  trackByCardId(index: number, card: Card): string {
+    return card.id;
   }
 
 }

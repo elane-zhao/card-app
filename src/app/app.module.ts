@@ -10,6 +10,7 @@ import { LoadingComponent } from './loading/loading.component';
 import { AppHttpInterceptor } from './app-http.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
+import { CardDetailsComponent } from './card-details/card-details.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FooterComponent } from './footer/footer.component';
     NavbarComponent,
     LoadingComponent,
     FooterComponent,
+    CardDetailsComponent,
   ],
   imports: [
     BrowserModule,

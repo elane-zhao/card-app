@@ -27,18 +27,27 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
+    // need to be called inside the ngAfterViewInit function, to ensure the searchInput element has already been initialized
+    // otherwise if put inside ngOnInit, it will throw Invalid event target error
     this.setSearchTermWithUserInput();
   }
 
+  clearInput() {
+    this.cardService.searchTerm.next('');
+  }
+
   setSearchTermWithUserInput() {
-    this.subscription = fromEvent(this.searchInput?.nativeElement, 'keyup').pipe(
-      filter(Boolean),
-      debounceTime(1000),
-      distinctUntilChanged(),
+    this.subscription = fromEvent(this.searchInput?.nativeElement, 'keyup').pipe( // pipe the event with multiple operators
+      debounceTime(1000), // debounce time is a delay we can add between event subscription, wait until the user stops typing for a second
       map((event: any) => event.target.value),
+      // filter(res => res.length > 0), // event won't be triggered if user input is empty string ''
+      distinctUntilChanged() // if the user input is the same with previous, event won't be triggered
     ).subscribe((searchText: string) => {
       this.cardService.searchTerm.next(searchText);
     });
   }
 
+  search(input: string) {
+    this.cardService.searchTerm.next(input);
+  }
 }
